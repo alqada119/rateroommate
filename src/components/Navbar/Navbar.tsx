@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import { SignInButton, SignedOut, SignedIn, SignOutButton } from '@clerk/clerk-react';
 
 function RoommateNavbar() {
   return (
@@ -12,8 +13,11 @@ function RoommateNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Create an account</Nav.Link>
+            <Nav.Link href="test">Home</Nav.Link>
+            <Nav.Link>
+              <SignedOut><SignInButton/></SignedOut>
+              <SignedIn><SignOutButton/></SignedIn>
+              </Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Search for a roommate</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

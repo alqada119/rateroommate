@@ -1,17 +1,23 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {Provider} from 'react-redux';
 import store from "./store/store";
-
+import { ClerkProvider } from '@clerk/clerk-react'
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
+const PUBLISHABLE_KEY = process.env.REACT_APP_VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
 root.render(
+  <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
   <Provider store={store}>
     <App />
   </Provider>
+  </ClerkProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

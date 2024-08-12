@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRoommates } from "../../store/actions/actions";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-
+import RatingBar from "../RatingBar/RatingBar";
 // Define the structure of a Roommate item
 interface Roommate {
   Name: string;
@@ -41,10 +41,12 @@ function RoommateComponent() {
     <div key={index} className="card mb-3">
       <div className="card-body">
         <h5 className="card-title">{roommate.Name}</h5>
-        <p className="card-text">Clean Rating: {roommate.CleanRating} / 5</p>
-        <p className="card-text">Quiet Rating: {roommate.QuietRating} / 5</p>
-        <p className="card-text">Smell Rating: {roommate.SmellRating} / 5</p>
-        <p className="card-text">Room Name: {roommate.RoomName}</p>
+        <br/>
+        <RatingBar type="Clean Rating" rating={roommate.CleanRating}/>
+        <RatingBar type="Smell Rating" rating={roommate.SmellRating}/>
+        <RatingBar type="Quiet Rating" rating={roommate.QuietRating}/>
+        <br/>
+        <p className="card-text"><strong>Room Name:</strong> {roommate.RoomName}</p>
         <p className="card-text"><strong>Description:</strong> {roommate.Description}</p>
       </div>
     </div>
